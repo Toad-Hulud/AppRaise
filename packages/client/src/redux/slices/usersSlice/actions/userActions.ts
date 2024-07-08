@@ -14,7 +14,7 @@ export const loadUsersAction = createAsyncThunk<
   } catch (error: any) {
     return rejectWithValue({
       message: 'Failed to load users',
-      details: error.message,
+      details: error.response?.data.message || error.message,
     });
   }
 });
@@ -28,9 +28,10 @@ export const createUserAction = createAsyncThunk<
     await userRepository.createUser({ name });
     dispatch(loadUsersAction());
   } catch (error: any) {
+    console.log({ error });
     return rejectWithValue({
       message: 'Failed to create user',
-      details: error.message,
+      details: error.response?.data.message || error.message,
     });
   }
 });
@@ -48,7 +49,7 @@ export const updateUserAction = createAsyncThunk<
     } catch (error: any) {
       return rejectWithValue({
         message: 'Failed to update user',
-        details: error.message,
+        details: error.response?.data.message || error.message,
       });
     }
   },
@@ -67,7 +68,7 @@ export const updateUserManagerAction = createAsyncThunk<
     } catch (error: any) {
       return rejectWithValue({
         message: 'Failed to update user manager',
-        details: error.message,
+        details: error.response?.data.message || error.message,
       });
     }
   },
@@ -84,7 +85,7 @@ export const deleteUserAction = createAsyncThunk<
   } catch (error: any) {
     return rejectWithValue({
       message: 'Failed to delete user',
-      details: error.message,
+      details: error.response?.data.message || error.message,
     });
   }
 });
@@ -100,7 +101,7 @@ export const deleteAllUsersAction = createAsyncThunk<
   } catch (error: any) {
     return rejectWithValue({
       message: 'Failed to delete all users',
-      details: error.message,
+      details: error.response?.data.message || error.message,
     });
   }
 });

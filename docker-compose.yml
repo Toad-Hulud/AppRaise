@@ -1,18 +1,18 @@
 version: '3.9'
 
 services:
-  client:
-      container_name: client
-      build:
-        context: .
-        dockerfile: Dockerfile.client
-      ports:
-        - "4200:4200"
-      environment:
-        - NEXT_PUBLIC_API_URL=http://localhost:3000/api
-      depends_on:
-        - api
-      entrypoint: ["sh", "-c", "sleep 10 && npx nx run client:dev -p 4200"]
+  # client:
+  #     container_name: client
+  #     build:
+  #       context: .
+  #       dockerfile: Dockerfile.client
+  #     ports:
+  #       - "4200:4200"
+  #     environment:
+  #       - NEXT_PUBLIC_API_URL=http://localhost:3000/api
+  #     depends_on:
+  #       - api
+  #     entrypoint: ["sh", "-c", "sleep 10 && npx nx run client:dev -p 4200"]
 
   api:
     container_name: api

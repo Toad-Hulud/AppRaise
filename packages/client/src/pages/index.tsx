@@ -21,21 +21,15 @@ interface HomePageProps {
   initialUsers: User[];
 }
 
-//@ts-expect-error ignore
 export const getServerSideProps: GetServerSideProps<HomePageProps> =
   wrapper.getServerSideProps((store) => async () => {
     await store.dispatch(loadUsersAction());
 
     const users = store.getState().users.users;
-    if (!users) {
-      return {
-        notFound: true,
-      };
-    }
 
     return {
       props: {
-        initialUsers: users,
+        initialUsers: users || [],
       },
     };
   });
