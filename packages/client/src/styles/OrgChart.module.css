@@ -1,0 +1,133 @@
+
+.orgChart {
+  --card-width: 200px;
+  --card-height: 50px;
+  --image-size: 50px;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  position: relative;
+}
+
+.orgChart ul {
+  padding-top: 20px;
+  position: relative;
+  transition: all 0.5s;
+  padding-left: 0;
+}
+
+.orgChart li {
+  display: inline-block;
+  text-align: center;
+  list-style-type: none;
+  padding: 20px 5px 0 5px;
+  position: relative;
+  transition: all 0.5s;
+  vertical-align: top;
+}
+
+.orgNode {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  transition: all 0.5s;
+  background: #fff;
+  text-align: center;
+  width: var(--card-width);
+  height: var(--card-height);
+}
+
+.avatar {
+  width: var(--image-size);
+  height: var(--image-size);
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.25rem;
+  line-height: var(--image-size);
+}
+
+.text {
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(100% - var(--image-size) - 20px);
+}
+
+.moreButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.selected {
+  border-color: blue;
+}
+
+.currentManager {
+  border-color: blue;
+}
+
+.changeCursor {
+  cursor: pointer;
+}
+
+.hovered {
+  border-color: green;
+}
+
+/* Мои любимые линии */
+.orgChart li::before, .orgChart li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
+}
+
+.orgChart li::before {
+  right: 50%;
+}
+
+.orgChart li::after {
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+.orgChart li:only-child::before, .orgChart li:only-child::after {
+  display: none;
+}
+
+.orgChart li:only-child {
+  padding-top: 0;
+}
+
+.orgChart li:first-child::before, .orgChart li:last-child::after {
+  border: 0 none;
+}
+
+.orgChart li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+}
+
+.orgChart li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+.orgChart ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+
+.orgChart > ul > li::before, .orgChart > ul > li::after {
+  display: none;
+}

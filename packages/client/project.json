@@ -1,0 +1,53 @@
+{
+  "name": "client",
+  "sourceRoot": "packages/client/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/client",
+        "root": "packages/client",
+        "sourceRoot": "packages/client/src",
+        "fileReplacements": [
+          {
+            "replace": "packages/client/src/environments/environment.ts",
+            "with": "packages/client/src/environments/environment.prod.ts"
+          }
+        ],
+        "assets": ["packages/client/public"],
+        "styles": ["packages/client/src/styles.css"],
+        "scripts": []
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "client:build"
+      }
+    },
+    "vite-dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vite",
+        "cwd": "packages/client"
+      }
+    },
+    "vite-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vite build",
+        "cwd": "packages/client"
+      }
+    },
+    "vite-serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vite preview",
+        "cwd": "packages/client"
+      }
+    }
+  },
+  "tags": []
+}
